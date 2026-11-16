@@ -3,7 +3,8 @@
 
 ## 완료
 - 큰 틀 계획 확정 → `docs/plan.md`
-- 채팅 체계·CLAUDE.md·Skills(chat-start, chat-close, task-spec)·Hooks(CLAUDE.md 글자 수, 비밀 파일 커밋 차단) 구성
+- 채팅 체계·CLAUDE.md·Skills(chat-start, chat-close, task-spec, task-verify)·Hooks(CLAUDE.md 글자 수, 비밀 파일 커밋 차단) 구성
+- 운영 흐름 확정: 작업 채팅은 완료 보고만 → 메인이 `task-verify`로 확인 → 통과 시 작업 채팅 보관·다음 진행. 새 채팅 안내는 메인만, 첫 프롬프트는 코드블록으로
 - 브랜치 방식 확정: 채팅 종료 시 PR → 채팅이 `main`에 직접 병합
 
 ## 다음 할 일
