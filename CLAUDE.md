@@ -1,0 +1,23 @@
+# nihongo
+1인용 일본어 단어 학습 Android 앱. 공개 저장소(포트폴리오).
+
+## 채팅 체계
+- 첫 메시지 "이 채팅은 X채팅이야" → `chat-start` 스킬 실행.
+- 종류: 메인 / 코딩N / 디자인N / 기능N. 작업 채팅은 일회용(끝나면 보관).
+- 메인: 계획·결정·작업 명세 작성. 큰 틀 끝나면 `chat-close` 후 새 메인 채팅 안내.
+- 작업 채팅: `docs/tasks/`의 자기 명세만 읽고 작업. 끝나면 `chat-close`.
+
+## 문서
+- `docs/plan.md` 확정 결정·로드맵
+- `docs/status.md` 현재 상태·다음 할 일(인수인계)
+- `docs/chats.md` 채팅 목록
+- `docs/tasks/` 작업 채팅별 명세
+
+## 응답 규칙
+- 미사여구·인사·칭찬·중복 요약 금지. 내용은 줄이지 말고 표현만 압축.
+- 한국어로 답변.
+
+## 규칙
+- 이 파일 2000자 이하 유지(훅이 검사). 상세 내용은 docs로.
+- 서명 키·인증 정보(*.jks, *.keystore, key.properties, 서비스 계정 json) 커밋 금지.
+- 스택: Kotlin + Jetpack Compose, Room, FSRS, GitHub Actions/Releases.
