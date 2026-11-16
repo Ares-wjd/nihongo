@@ -9,6 +9,9 @@
 - 빌드: GitHub Actions → GitHub Releases에 서명 APK.
 - 서명 키는 GitHub Secrets에만. 키 동일해야 업데이트 가능.
 
+## 브랜치
+- 기본 브랜치 `main`. 채팅마다 자기 작업 브랜치 → 종료 시 PR 생성 후 채팅이 직접 `main`에 병합.
+
 ## 설치·업데이트
 - 최초: Releases 링크로 APK 설치.
 - 앱 업데이트 버튼: 최신 릴리스 조회 → APK 다운로드 → 설치 화면(사용자 1회 탭 필요).
