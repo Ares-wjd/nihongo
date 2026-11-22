@@ -52,7 +52,9 @@ base64 -w 0 nihongo-release.jks > nihongo-release.b64.txt
 4개 중 하나라도 없으면 release 워크플로가 실패한다.
 
 ## 5. 릴리스 방법
-`main`에서 태그를 만들어 푸시한다. 형식은 `vX.Y.Z`.
+방법 A(권장): Actions → Release → **Run workflow** → branch `main`, 버전 `0.1.0` 입력. 워크플로가 현재 커밋에 태그 `v0.1.0`을 만들고 Release 생성.
+
+방법 B: `main`에서 태그를 만들어 푸시한다. 형식은 `vX.Y.Z`.
 
 ```bash
 git checkout main && git pull
