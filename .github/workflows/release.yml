@@ -3,6 +3,11 @@ name: Release
 on:
   push:
     tags: ['v*']
+  workflow_dispatch:
+    inputs:
+      version:
+        description: '버전 (예: 0.1.0). 태그 v<버전>을 현재 커밋에 생성'
+        required: true
 
 permissions:
   contents: write
@@ -22,9 +27,20 @@ jobs:
 
       - name: Resolve version
         id: version
+        env:
+          INPUT_VERSION: ${{ inputs.version }}
         run: |
-          VERSION="${GITHUB_REF_NAME#v}"
+          if [ "$GITHUB_EVENT_NAME" = "workflow_dispatch" ]; then
+            VERSION="${INPUT_VERSION#v}"
+          else
+            VERSION="${GITHUB_REF_NAME#v}"
+          fi
+          if ! [[ "$VERSION" =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
+            echo "::error::Invalid version '$VERSION' (expected X.Y.Z)."
+            exit 1
+          fi
           echo "name=$VERSION" >> "$GITHUB_OUTPUT"
+          echo "tag=v$VERSION" >> "$GITHUB_OUTPUT"
           echo "code=${{ github.run_number }}" >> "$GITHUB_OUTPUT"
 
       - name: Restore keystore
@@ -72,8 +88,9 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: >
-          gh release create "$GITHUB_REF_NAME" "${{ steps.apk.outputs.path }}"
-          --title "$GITHUB_REF_NAME"
+          gh release create "${{ steps.version.outputs.tag }}" "${{ steps.apk.outputs.path }}"
+          --target "$GITHUB_SHA"
+          --title "${{ steps.version.outputs.tag }}"
           --notes "versionName ${{ steps.version.outputs.name }}, versionCode ${{ steps.version.outputs.code }}"
 
       - name: Remove keystore
