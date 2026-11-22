@@ -10,7 +10,7 @@
 - 서명 키는 GitHub Secrets에만. 키 동일해야 업데이트 가능.
 - 패키지 `io.github.ares_wjd.nihongo`, minSdk 26, targetSdk 35. Gradle Kotlin DSL + Version Catalog.
 - 버전: 태그 `vX.Y.Z` → versionName, versionCode = Actions 실행 번호.
-- CI: PR·`main` 푸시 시 디버그 빌드 검사, `v*` 태그 푸시 시 서명 APK를 Releases에 업로드.
+- CI: PR·`main` 푸시 시 디버그 빌드 검사. 릴리스는 Actions Release 수동 실행(버전 입력 → 태그 생성) 또는 `v*` 태그 푸시 → 서명 APK를 Releases에 업로드.
 - 서명 키: 사용자가 `keytool`로 생성·백업, base64로 Secrets 4개 등록(절차 `docs/signing.md`).
 
 ## 브랜치
